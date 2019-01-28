@@ -1,46 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Jobs Applied To</title>
-
-    <style>
-
-        table, tbody, tr, td {
-            table-layout: fixed;
-            width: 100%;
-            border-collapse: collapse;
-            border: 3px solid purple;
-        }
+{% extends "base.html" %}
 
 
-    </style>
 
-
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
-
-
-<style type="text/css">
-      .container {
-        max-width: 500px;
-        padding-top: 100px;
-      }
-      h2 {color: red;}
-      </style>
-
-
-</head>
-<body>
-
-
-<h3>
-    <a href="{{ url_for('readdb') }}">Comments - Flask
-        SQLAlchemy example</a>
-</h3>
-
-<hr/>
-
+{% block content %}
 
 {%- for message in get_flashed_messages() %}
     {{ message }}
@@ -59,10 +21,5 @@
 </table>
 
 
-<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
-
-
-</body>
-</html>
+{%  endblock %}

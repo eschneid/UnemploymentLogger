@@ -33,6 +33,7 @@ db.create_all()
 
 
 @app.route('/')
+@app.route('/index')
 def readdb():
 
 
@@ -73,6 +74,13 @@ and c.loc_id = l.id
 
     # return render_template('appliedto.html', result=rows)
     return render_template('appliedto.html', result=company.query.all())
+
+
+@app.route('/addnew')
+def addnew():
+
+    return render_template('addnew.html' )
+
 
 if __name__ == '__main__':
     app.run()
