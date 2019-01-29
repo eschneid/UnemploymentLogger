@@ -1,9 +1,12 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, flash, redirect
+
 from flask_sqlalchemy import SQLAlchemy
 from jinja2 import Template
 
+from company import Company
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'any secret string'
 
 
 t = Template("Hello {{ something }}!")
@@ -17,6 +20,10 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:1234@localhost/po
 
 db = SQLAlchemy(app)
 class company(db.Model):
+
+
+
+
    id = db.Column('id', db.Integer, primary_key = True)
    name = db.Column(db.String(100))
    url = db.Column(db.String(50))
@@ -78,8 +85,12 @@ and c.loc_id = l.id
 
 @app.route('/addnew')
 def addnew():
+    form = Company()
+    if form.validate_on_submit():
+        flash('Data needed')
 
-    return render_template('addnew.html' )
+
+    return render_template('addnew.html', form=form )
 
 
 if __name__ == '__main__':

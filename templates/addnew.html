@@ -1,11 +1,18 @@
 {% extends "base.html" %}
 
-
-
 {% block content %}
+    <div id="add" name="add">
+    <h1>Add New Job Search</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.name.label }} {{ form.name(size=32) }}
+        </p>
+        <p>{{ form.url.label() }} {{ form.url}}</p>
 
-ADD NEW DATA... fields and all that..
+        <p>{{ form.loc_id.label() }} {{ form.loc_id}}</p>
 
-
-
-{%  endblock %}
+        <p>{{ form.submit() }}</p>
+    </form>
+    </div>
+{% endblock %}
