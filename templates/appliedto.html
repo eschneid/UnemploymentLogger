@@ -22,6 +22,10 @@
             <td>job_number</td>
             <td>date_submitted</td>
             <td>additional_info</td>
+            <td>Street</td>
+            <td>City</td>
+            <td>State</td>
+            <td>Zip</td>
         </tr>
         {% for jobs in result %}
             <tr>
@@ -33,6 +37,10 @@
                 <td>{{ jobs.job_number }}</td>
                 <td>{{ jobs.date_submitted }}</td>
                 <td>{{ jobs.additional_info }}</td>
+                <td>{{ jobs.company.location.street }}</td>
+                <td>{{ jobs.company.location.city }}</td>
+                <td>{{ jobs.company.location.state }}</td>
+                <td>{{ jobs.company.location.zip }}</td>
             </tr>
         {% endfor %}
         </tbody>

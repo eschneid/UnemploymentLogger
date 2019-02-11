@@ -28,12 +28,6 @@ class Form(FlaskForm):
     submit = SubmitField('Add Record')
 
 
-# t = Template("Hello {{ something }}!")
-# t.render(something="World")
-
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///students.sqlite3'
-
-
 class Jobsearch(db.Model):
     __tablename__ = 'jobsearch'
 
@@ -50,10 +44,6 @@ class Jobsearch(db.Model):
 
     outcome_id = db.Column(db.Integer, db.ForeignKey('outcome.id'), nullable=False)
     outcome = db.relationship('Outcome', backref=db.backref('jobsearch', lazy=True))
-    # outcome = db.relationship('Outcome', backref=db.backref('job', lazy=True), uselist=False)
-
-    # outcome_id = db.Column(db.Integer(), db.ForeignKey('outcome.id'))
-    # js = db.relationship('Jobsearch', backref='out', uselist=False)
 
     def __repr__(self):
        return '<Company {}>'.format(self.name)
@@ -65,8 +55,6 @@ class Outcome(db.Model):
     id = db.Column('id', db.Integer, primary_key = True)
     outcome = db.Column('outcome', db.String(255) )
 
-    # js = db.relationship('Jobsearch', backref='out', uselist=False)
-    # outcome = db.relationship('Outcome', backref='job', uselist=False)
 
 class Company(db.Model):
     __tablename__ = 'company'
@@ -74,10 +62,9 @@ class Company(db.Model):
     id = db.Column('id', db.Integer, primary_key = True)
     name = db.Column(db.String(100), nullable=False)
     url = db.Column(db.String(50))
-    # loc_id = db.Column(db.Integer, db.ForeignKey('location.id'))
 
-    # loc = db.relationship('Location', backref='company', uselist=False)
-    # js = db.relationship('Jobsearch', backref='co', uselist=False)
+    location_id = db.Column(db.Integer, db.ForeignKey('location.id'), nullable=False)
+    location = db.relationship('Location', backref=db.backref('loc', lazy=True))
 
     def __repr__(self):
        return '<Company {}>'.format(self.name)
@@ -91,7 +78,6 @@ class Location(db.Model):
     city = db.Column(db.String(255), nullable=False)
     state = db.Column(db.String(2))
     zip = db.Column(db.Integer)
-    company_id = db.Column(db.Integer(), db.ForeignKey('company.id'))
 
 
 def __init__(self, name, url, loc_id):
