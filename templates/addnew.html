@@ -1,18 +1,67 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div id="add" name="add">
-    <h1>Add New Job Search</h1>
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
         <p>
-            {{ form.name.label }} {{ form.name(size=32) }}
+            {{ form.name.label }}<br>
+            {{ form.name(size=32) }}
+             {% for error in form.name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
         </p>
-        <p>{{ form.url.label() }} {{ form.url}}</p>
-
-        <p>{{ form.loc_id.label() }} {{ form.loc_id}}</p>
-
-        <p>{{ form.submit() }}</p>
+        <p>
+            {{ form.title.label }}<br>
+            {{ form.title(size=32) }}
+             {% for error in form.title.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.contract_company.label }}<br>
+            {{ form.contract_company(size=32) }}
+             {% for error in form.contract_company.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.submitted_method.label }}<br>
+            {{ form.submitted_method(size=32) }}
+             {% for error in form.submitted_method.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.outcome.label }}<br>
+            {{ form.outcome(size=32) }}
+             {% for error in form.outcome.errors %}
+            <span style="color: #2aff30;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.job_number.label }}<br>
+            {{ form.job_number(size=32) }}
+             {% for error in form.job_number.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.date_submitted.label }}<br>
+            {{ form.date_submitted(size=32) }}
+             {% for error in form.date_submitted.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.additional_info.label }}<br>
+            {{ form.additional_info(size=32) }}
+             {% for error in form.additional_info.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+         <p>{{ form.submit() }}</p>
     </form>
-    </div>
 {% endblock %}
+
+
+

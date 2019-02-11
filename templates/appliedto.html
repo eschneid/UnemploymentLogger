@@ -4,22 +4,39 @@
 
 {% block content %}
 
-{%- for message in get_flashed_messages() %}
-    {{ message }}
-{%- endfor %}
-
-<table>
-<tbody>
-{% for student in result %}
-    <tr>
-        <td>{{ student.name }}</td>
-        <td>{{ student.url }}</td>
-        <td>{{ student.loc_id }}</td>
-    </tr>
-{% endfor %}
-</tbody>
-</table>
+    {%- for message in get_flashed_messages() %}
+        {{ message }}
+    {%- endfor %}
+    <br>Job Search for Eric Schneider</br>
+    </hr>
 
 
+    <table>
+        <tbody>
+        <tr>
+            <td>name</td>
+            <td>title</td>
+            <td>contract_company</td>
+            <td>submitted_method</td>
+            <td>outcome</td>
+            <td>job_number</td>
+            <td>date_submitted</td>
+            <td>additional_info</td>
+        </tr>
+        {% for jobs in result %}
+            <tr>
+                <td> {{jobs.company.name }}</td>
+                <td>{{ jobs.title }}</td>
+                <td>{{ jobs.contract_company }}</td>
+                <td>{{ jobs.submitted_method }}</td>
+                <td>{{ jobs.outcome.outcome }}</td>
+                <td>{{ jobs.job_number }}</td>
+                <td>{{ jobs.date_submitted }}</td>
+                <td>{{ jobs.additional_info }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-{%  endblock %}
+
+{% endblock %}
