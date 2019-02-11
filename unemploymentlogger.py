@@ -80,6 +80,8 @@ class Location(db.Model):
     zip = db.Column(db.Integer)
 
 
+
+
 def __init__(self, name, url, loc_id):
    self.name = name
    self.url = url
